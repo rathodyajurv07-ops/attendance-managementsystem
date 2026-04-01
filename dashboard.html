@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Attendance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="xlsx.full.min.js"></script>
+  <script src="jspdf.min.js"></script>
+  <script src="jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
+  <h2>Attendance Management System</h2>
+
+  <!-- Filters -->
+  <div class="filters">
+    <input type="date" id="filterDate" onchange="filterAttendance()">
+    <select id="filterClass" onchange="filterAttendance()">
+      <option value="">All Classes</option>
+      <option value="Class A">Class A</option>
+      <option value="Class B">Class B</option>
+    </select>
+    <button onclick="exportExcel()">Export Excel</button>
+    <button onclick="exportPDF()">Export PDF</button>
+  </div>
+
+  <!-- Attendance Table -->
+  <table id="attendanceTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class="class">Class</th>
+        <th class="date">Date</th>
+        <th>Present</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Rows added by JS -->
+    </tbody>
+  </table>
+
+  <!-- Add Attendance (Admin Only) -->
+  <div class="admin-only">
+    <h3>Add Student Attendance</h3>
+    <input type="text" id="studentName" placeholder="Student Name">
+    <select id="studentClass">
+      <option value="Class A">Class A</option>
+      <option value="Class B">Class B</option>
+    </select>
+    <input type="date" id="attendanceDate">
+    <input type="checkbox" id="attendanceStatus"> Present
+    <button onclick="addAttendance()">Add Attendance</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
